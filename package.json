@@ -1,0 +1,24 @@
+{
+  "name": "eichs-mountain",
+  "version": "1.0.0",
+  "description": "a game ",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickolusroy/eichs-mountain.git"
+  },
+  "author": "Nickolus Cunningham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nickolusroy/eichs-mountain/issues"
+  },
+  "homepage": "https://github.com/nickolusroy/eichs-mountain#readme",
+  "devDependencies": {
+    "grunt-browserify": "^5.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-less": "^1.3.0"
+  }
+}

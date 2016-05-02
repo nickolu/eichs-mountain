@@ -1,0 +1,129 @@
+require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+/**
+
+Eich's Mountain
+
+a javascript learning game
+
+by Nickolus Cunningham
+
+**/
+
+var generator = require('./profile-generator.js');
+
+
+var game = function() {
+
+	var Player = function() {
+		var pub = {};
+
+
+		return pub;
+	};
+
+	var Timer = function() {
+		var pub = {};
+
+
+		return pub;
+	};
+
+	var Hero = function(profile) {
+		var pub = this,
+			priv = {};
+
+		priv.profile = profile || randomHeroProfile();
+		
+		priv.life = priv.profile.life,
+		priv.name = priv.profile.name,
+		priv.stats = priv.profile.stats;
+
+		
+		pub.fight = function(target) {
+			target(target).resolveDamage(pub.stats,'fight');
+		};
+
+		pub.cast = function(target,spellName) {
+			target(target).resolveSpell(pub.stats,spellName);
+		};
+
+		pub.takeDamage = function(damage) {
+
+		}
+		return pub;
+	};
+
+	var Event = function() {
+		// whenever this event is triggered, do something
+		var pub = this;
+
+		pub.events = [];
+		pub.trigger = function(){
+			var i, 
+				l = pub.events.length;
+			
+			for (i=0; i<l; i++) {
+				pub.events[i]();
+			}
+
+		};
+	};
+
+	function randomHeroProfile() {
+		var profile = {
+			name : generate.name(),
+			gender : generate.gender(),
+			stats : generate.stats()
+
+		}
+
+		return profile;
+	}
+
+
+
+
+};
+
+
+
+
+
+/**
+ * @param  {[type]}
+ * @return {[type]}
+ */
+function target(target) {
+	
+	switch (typeof target) {
+		case 'string' : 
+			return game.availableTargets
+			break;
+		case 'object' : 
+			return target;
+			break;
+		default :
+			return 'invalid target';
+	}
+}
+
+},{"./profile-generator.js":"profile-generator"}],"profile-generator":[function(require,module,exports){
+module.exports = function() {
+	generator = {
+		name : function() {
+			var name = "henry";
+			return name;
+		},
+		stats : function() {
+			var stats = {};
+			return stats;
+		},
+		gender : function() {
+			var gender = {};
+			return gender;
+		}
+	}
+
+	return generator;
+}
+},{}]},{},[1]);
